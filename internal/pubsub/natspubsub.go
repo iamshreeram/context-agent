@@ -20,7 +20,7 @@ type PubSub interface {
 }
 
 type NatsEventPublisher struct {
-	natsPubSub *NatsPubSub
+	PubSub PubSub
 }
 
 func (p *NatsEventPublisher) PublishEvent(id string, dependencies []string, timestamp int64) {
@@ -30,7 +30,7 @@ func (p *NatsEventPublisher) PublishEvent(id string, dependencies []string, time
 	log.Println(node)
 	data, _ := json.Marshal(node)
 
-	p.natsPubSub.Publish(subject, data)
+	p.PubSub.Publish(subject, data)
 }
 
 type NatsPubSub struct {

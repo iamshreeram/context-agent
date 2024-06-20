@@ -4,8 +4,8 @@ import (
 	"log"
 	"time"
 
-	"github.com/iamshreeram/context-agent/internal/pubsub"
-	"github.com/iamshreeram/context-agent/simulator"
+	"github.com/context-agent/internal/pubsub"
+	"github.com/context-agent/simulator"
 )
 
 func main() {
@@ -14,7 +14,7 @@ func main() {
 		panic(err)
 	}
 
-	eventPublisher := &pubsub.NatsEventPublisher{natsPubSub: natsPubSub}
+	eventPublisher := &pubsub.NatsEventPublisher{PubSub: natsPubSub}
 
 	log.Println("INIT : Initializing context-agent app..")
 	time.Sleep(1 * time.Second)
